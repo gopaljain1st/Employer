@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--    tools:showIn="navigation_view">-->
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:title="Dashboard" />
+
+        <item
+            android:id="@+id/nav_find_job"
+            android:icon="@drawable/find_job"
+            android:title="Find Job" />
+
+
+        <item
+            android:id="@+id/nav_urgent_job"
+            android:icon="@drawable/find_job"
+            android:title="Urgent Job" />
+
+        <item
+            android:id="@+id/nav_set_availabilty"
+            android:icon="@drawable/find_job"
+            android:title="Set Availabilty" />
+
+        <item
+            android:id="@+id/nav_edit_profile"
+            android:icon="@drawable/ic_mode_edit_black_24dp"
+            android:title="Edit Profile" />
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/profile"
+                android:icon="@drawable/ic_content_paste_black_24dp"
+                android:title="Profile" />
+
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_input_black_24dp"
+                android:title="Logout" />
+        </menu>
+    </item>
+
+
+</menu>

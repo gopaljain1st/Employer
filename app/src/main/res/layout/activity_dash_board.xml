@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sag"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="130dp"
+            android:layout_margin="8dp"
+            android:alpha="0.7"
+            android:background="@drawable/job_img"
+            android:text="Find Job"
+            android:textAlignment="center"
+            tools:ignore="RtlCompat"
+            android:textSize="11sp"
+            android:gravity="bottom"
+            android:tooltipText="Job" />
+
+        <Button
+            android:layout_margin="8dp"
+            android:layout_width="160dp"
+            android:layout_height="130dp"
+            android:alpha="0.7"
+            android:text="Urgent Job"
+            android:textAlignment="center"
+            android:textSize="11sp"
+            tools:ignore="RtlCompat"
+            android:gravity="bottom"
+            android:tooltipText="Urgent Job"
+            android:background="@drawable/urgentjob_img"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:layout_margin="8dp"
+            android:layout_width="160dp"
+            android:layout_height="130dp"
+            android:alpha="0.7"
+            android:textSize="11sp"
+            android:tooltipText="Seat"
+            android:text="seat available"
+            android:textAlignment="center"
+            tools:ignore="RtlCompat"
+            android:gravity="bottom"
+            android:background="@drawable/sea"/>
+
+        <Button
+            android:layout_margin="8dp"
+            android:layout_width="160dp"
+            android:layout_height="130dp"
+            android:alpha="0.7"
+            android:text="Profile"
+            android:textSize="11sp"
+            android:textAlignment="center"
+            tools:ignore="RtlCompat"
+            android:gravity="bottom"
+            android:tooltipText="Profile"
+            android:background="@drawable/profile"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

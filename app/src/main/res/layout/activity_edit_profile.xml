@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dimen_20dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:text="Update Profile"
+            android:textSize="@dimen/text_16sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="@dimen/dimen_100dp"
+            android:layout_height="@dimen/dimen_100dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:background="@drawable/rounded_corner_layout"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_10dp">
+
+            <ImageView
+                android:id="@+id/ProfileImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/profile_icon"></ImageView>
+        </LinearLayout>
+
+        <!--background_information layout field start -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_15dp"
+            android:text="@string/background_information"
+            android:textSize="@dimen/text_14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:background="@drawable/rounded_corner_layout"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_10dp">
+
+
+            <!--First Name and Last Name  field layout start-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/f_name"
+                    android:textColor="@color/orange_color"
+                    android:textSize="@dimen/text_12sp" />
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_5dp"
+                    android:layout_weight="1"
+                    android:text="@string/l_name"
+                    android:textColor="@color/orange_color"
+                    android:textSize="@dimen/text_12sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_f_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                    android:hint="@string/f_name"
+                    android:inputType="textPersonName"
+                    android:nextFocusDown="@+id/et_l_name"
+                    android:padding="@dimen/dimen_8dp"
+                    android:textColor="@color/gray_color"
+                    android:textSize="@dimen/dimen_12dp" />
+
+                <EditText
+                    android:id="@+id/et_l_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                    android:hint="@string/l_name"
+                    android:inputType="textPersonName"
+                    android:nextFocusDown="@+id/et_phone_number"
+                    android:padding="@dimen/dimen_8dp"
+                    android:textColor="@color/gray_color"
+                    android:textSize="@dimen/text_12sp" />
+
+            </LinearLayout>
+
+
+            <!--First Name and Last Name  field layout End-->
+
+
+            <!--PhoneNumber layout field start-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@string/phone_number"
+                android:textColor="@color/orange_color"
+                android:textSize="@dimen/text_12sp" />
+
+            <EditText
+                android:id="@+id/et_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                android:gravity="center_vertical"
+                android:hint="Ex. 9009012345"
+                android:inputType="phone"
+                android:nextFocusDown="@+id/et_email"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_8dp"
+                android:textColor="@color/gray_color"
+                android:textSize="@dimen/dimen_12dp" />
+
+
+            <!--PhoneNumber layout field End-->
+
+
+            <!--Email layout field start-->
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@string/email"
+                android:textColor="@color/orange_color"
+                android:textSize="@dimen/text_12sp" />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                android:gravity="center_vertical"
+                android:hint="email@xyz.com"
+                android:inputType="textEmailAddress"
+                android:nextFocusDown="@+id/et_password"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_8dp"
+                android:textColor="@color/gray_color"
+                android:textSize="@dimen/dimen_12dp">
+
+            </EditText>
+
+
+            <!--Email layout field End-->
+
+            <!--password layout field Start-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Address"
+                    android:textColor="@color/orange_color"
+                    android:textSize="@dimen/text_12sp" />
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_5dp"
+                    android:layout_weight="1"
+                    android:text="Password"
+                    android:textColor="@color/orange_color"
+                    android:textSize="@dimen/text_12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                    android:hint="Address"
+                    android:inputType="textEmailAddress"
+                    android:nextFocusDown="@+id/et_cnfm_pswd"
+                    android:padding="@dimen/dimen_8dp"
+                    android:textColor="@color/gray_color"
+                    android:textSize="@dimen/text_12sp" />
+
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                    android:hint="Password"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:nextFocusDown="@+id/et_country_of_origin"
+                    android:padding="@dimen/dimen_8dp"
+                    android:textColor="@color/gray_color"
+                    android:textSize="@dimen/text_12sp" />
+
+            </LinearLayout>
+
+
+            <!--Country of origion layout field Start-->
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="Paytm Numbrer"
+                android:textColor="@color/orange_color"
+                android:textSize="@dimen/text_12sp" />
+
+            <EditText
+                android:id="@+id/et_paytm_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                android:drawableRight="@drawable/drop_down"
+                android:drawablePadding="@dimen/dimen_5dp"
+                android:gravity="center_vertical"
+                android:hint="Paytm Number"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_8dp"
+                android:inputType="number"
+                android:textColor="@color/gray_color"
+                android:textSize="@dimen/dimen_12dp">
+
+            </EditText>
+
+
+            <!--Country of origion layout field End-->
+
+
+            <!--Location in uk layout field End-->
+
+
+            <!--Post Code  layout field Start-->
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:text="Tez Number"
+                android:textColor="@color/orange_color"
+                android:textSize="@dimen/text_12sp" />
+
+            <EditText
+                android:id="@+id/et_tez_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                android:gravity="center_vertical"
+                android:hint="Tez Number"
+                android:inputType="number"
+                android:nextFocusDown="@+id/et_account_number"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_8dp"
+                android:textColor="@color/gray_color"
+                android:textSize="@dimen/dimen_12dp" />
+
+
+            <!--Post Code  layout field End-->
+
+
+            <!--Account Number   layout field Start-->
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@string/account_number"
+                android:textColor="@color/orange_color"
+                android:textSize="@dimen/text_12sp" />
+
+            <EditText
+                android:id="@+id/et_account_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                android:gravity="center_vertical"
+                android:hint="Ex. 425123456789"
+                android:inputType="number"
+                android:nextFocusDown="@+id/et_short_code"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_8dp"
+                android:textColor="@color/gray_color"
+                android:textSize="@dimen/dimen_12dp" />
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="IFSC CODE"
+                android:textColor="@color/orange_color"
+                android:textSize="@dimen/text_12sp" />
+
+            <EditText
+                android:id="@+id/IFSCCODE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                android:gravity="center_vertical"
+                android:hint="IFSC CODE"
+                android:inputType="textEmailAddress"
+                android:nextFocusDown="@+id/et_short_code"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_8dp"
+                android:textColor="@color/gray_color"
+                android:textSize="@dimen/dimen_12dp" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="Bank Name"
+                android:textColor="@color/orange_color"
+                android:textSize="@dimen/text_12sp" />
+
+            <EditText
+                android:id="@+id/et_bank_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                android:gravity="center_vertical"
+                android:hint="Bank Name"
+                android:inputType="text"
+                android:nextFocusDown="@+id/et_short_code"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_8dp"
+                android:textColor="@color/gray_color"
+                android:textSize="@dimen/dimen_12dp" />
+
+
+
+            <!--Account Number layout field End-->
+
+
+            <!--short code layout field Start-->
+
+            <!--short code layout field End-->
+
+            <!--NINO layout field Start-->
+
+
+            <!--NINO layout field End-->
+
+
+            <!--Skills layout field Start-->
+
+            <!--Skills layout field End-->
+        </LinearLayout>
+
+        <!--background_information layout field End -->
+
+
+        <!--Attachment field layout Start-->
+
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_15dp"
+            android:text="@string/attachment"
+            android:textSize="@dimen/text_14sp"
+            android:visibility="gone" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:background="@drawable/rounded_corner_layout"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_10dp"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/attach_clear_picture_of_your_nino"
+                android:textSize="@dimen/text_12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:gravity="left"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_nino"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/default_upload"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/img_nino_remove"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:padding="@dimen/dimen_3dp"
+                        android:src="@drawable/removee_pic"
+                        android:visibility="gone" />
+
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/img_pick_nino"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="@dimen/dimen_8dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/upload" />
+
+            </LinearLayout>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@string/attach_clear_picture_of_your_cscs"
+                android:textSize="@dimen/text_12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:gravity="left"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_cscs"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/default_upload"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/img_cscs_remove"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:padding="@dimen/dimen_3dp"
+                        android:src="@drawable/removee_pic"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/img_pick_cscs"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="@dimen/dimen_8dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/upload" />
+
+            </LinearLayout>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@string/attach_clear_picture_of_your_utr"
+                android:textSize="@dimen/text_12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:gravity="left"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_utr"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/default_upload"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/img_utr_remove"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:padding="@dimen/dimen_3dp"
+                        android:src="@drawable/removee_pic"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/img_pick_utr"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="@dimen/dimen_8dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/upload" />
+
+            </LinearLayout>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@string/attach_your_cv"
+                android:textSize="@dimen/text_12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:gravity="left"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_cv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/doc"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/img_cv_remove"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:padding="@dimen/dimen_3dp"
+                        android:src="@drawable/removee_pic"
+                        android:visibility="gone" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/img_pick_cv"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="@dimen/dimen_8dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/upload" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!--Attachment field layout End-->
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:background="@drawable/rounded_corner_layout"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_10dp">
+
+
+            <!--if you have car layout field start -->
+
+
+
+
+            <!--if you have car layout field End -->
+
+
+
+
+            <!--required ppe layout field End -->
+
+
+            <!--MYAWTC layout field Start -->
+
+
+            <!--Additional detail layout field Start -->
+
+
+            <!--Additional detail layout field End -->
+
+
+            <!--join or create team layout field start -->
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@string/join_create_team"
+                android:textColor="@color/orange_color"
+                android:textSize="@dimen/text_12sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/et_join_create_team"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                android:clickable="false"
+                android:drawableRight="@drawable/drop_down"
+                android:drawablePadding="@dimen/dimen_5dp"
+                android:focusable="false"
+                android:gravity="left"
+                android:hint="Join team/Create team"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_8dp"
+                android:textColor="@color/gray_color"
+                android:textSize="@dimen/dimen_12dp"
+                android:visibility="gone" />
+
+
+            <!--join or create team layout field End -->
+
+            <!--enter teamid layout field start -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@string/enter_team_id"
+                android:textColor="@color/orange_color"
+                android:textSize="@dimen/text_12sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/et_enter_team"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                android:gravity="center_vertical"
+                android:hint="Ex. team123"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_8dp"
+                android:textColor="@color/gray_color"
+                android:textSize="@dimen/dimen_12dp"
+                android:visibility="gone" />
+
+
+            <!--enter teamid layout field End -->
+
+        </LinearLayout>
+
+
+        <!--Register button layout field start-->
+
+
+
+        <Button
+            android:id="@+id/btn_updateEmployee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner_rectangle_black_2"
+            android:gravity="center"
+            android:padding="@dimen/dimen_10dp"
+            android:hint="Update"
+            android:textAlignment="center"
+            android:textColorHint="#FFF"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_16sp" />
+
+
+        <!--Register button layout field End-->
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </LinearLayout>
+</ScrollView>
