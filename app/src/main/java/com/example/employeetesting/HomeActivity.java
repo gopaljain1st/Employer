@@ -67,11 +67,9 @@ FirebaseAuth firebaseAuth;
     StorageReference storageReference;
     private FirebaseUser mCurrentUser;
 
+    TextView txt_35,txt_10,txt_5,txt_25;
 
-    TextView txt_35,txt_10,txt_5,txt_25,datePicker,dateDisplay;
-
-    String user,dateJob,date,kkk,mainDate;
-    boolean b=true;
+    String user,dateJob,date,kkk;
     int id=0,s=0,k=0;
 
 
@@ -162,8 +160,7 @@ FirebaseAuth firebaseAuth;
         txt_35=findViewById(R.id.txt_35);
         txt_10=findViewById(R.id.txt_10);
         txt_5=findViewById(R.id.txt_5);
-        datePicker=findViewById(R.id.date_picker);
-        dateDisplay=findViewById(R.id.date);
+
 
 
 
@@ -220,100 +217,63 @@ FirebaseAuth firebaseAuth;
             Toast.makeText(this, ""+n, Toast.LENGTH_SHORT).show();
         }
 
-        datePicker.setOnClickListener(new View.OnClickListener() {
+        databaseReference=firebaseDatabase.getReference().child("Jobs");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        user=ds.getKey();
+                        ds1=firebaseDatabase.getInstance().getReference().child("Jobs").child(user);
+                        // user=ds.getKey();
+                        ds1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshots) {
+                                if (dataSnapshots.exists())
+                                {
+                                    for (DataSnapshot ds1 : dataSnapshots.getChildren())
+                                    {
+                                        String  jobs=ds1.getKey();
+                                        s++;
 
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dialog = new DatePickerDialog(
-                        HomeActivity.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        mDateSetListener,
-                        year,month,day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
-
-            }
-        });
-
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month = month + 1;
-                mainDate = day + "/" + month + "/" + year;
-                dateDisplay.setText("SelectedDate ( "+mainDate+" )");
-                databaseReference=firebaseDatabase.getReference().child("Jobs");
-                b=false;
-                s=0;
-                id=0;
-                k=0;
-                databaseReference.addValueEventListener(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                                user=ds.getKey();
-                                ds1=firebaseDatabase.getInstance().getReference().child("Jobs").child(user);
-                                // user=ds.getKey();
-                                ds1.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshots) {
-                                        if (dataSnapshots.exists())
-                                        {
-
-                                            for (DataSnapshot ds1 : dataSnapshots.getChildren())
-                                            {
-                                                String  jobs=ds1.getKey();
-                                                s++;
-
-                                                date=dataSnapshots.child(jobs).child("Job_Date").getValue().toString();
+                                        date=dataSnapshots.child(jobs).child("Job_Date").getValue().toString();
 
 
-                                                // s=(int)dataSnapshot.getChildrenCount();
-                                                //Calendar calendar=Calendar.getInstance();
-                                                //String currentDate= DateFormat.getDateInstance().format(calendar.getTime());
+                                        // s=(int)dataSnapshot.getChildrenCount();
+                                        Calendar calendar=Calendar.getInstance();
+                                        String currentDate= DateFormat.getDateInstance().format(calendar.getTime());
 
-                                                //Log.d("current","urgent job="+currentDate);
-                                                //Log.d("date","urgent job="+date);
-                                                // date1= sc.next()==date;
-                                                //date2 = sc.next();
+                                        //Log.d("current","urgent job="+currentDate);
+                                        //Log.d("date","urgent job="+date);
+                                        // date1= sc.next()==date;
+                                        //date2 = sc.next();
 
-                                                //Log.d("datejob","date"+kkk);
-                                                Log.d("date",date);
-                                                Log.d("mainDAte",mainDate);
-                                                // String arr1[] = date.split("/");
-                                                //String arr2[] = mainDate.split("/");
-                                                //String arr3[]={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
-                                                //if(arr1[0].equals(arr2[0])&&arr1[2].equals(arr2[2])&& arr2[1].equals(arr3[Integer.parseInt(arr1[1])-1]))
-                                                //{
-                                                //   id++;
-                                                //}
-                                                //else
-                                                //  k++;
-                                                if(date.trim().equals(mainDate))
-                                                    id++;
-                                                else k++;
+                                        //Log.d("datejob","date"+kkk);
 
-                                                // Log.d("urgent","Urgent jobs=="+id);
+                                        String arr1[] = date.split("/");
+                                        String arr2[] = currentDate.split("-");
+                                        String arr3[]={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+                                        if(arr1[0].equals(arr2[0])&&arr1[2].equals(arr2[2])&& arr2[1].equals(arr3[Integer.parseInt(arr1[1])-1])) {
+                                            id++;
+                                        }
+                                        else
+                                            k++;
 
-                                                txt_10.setText(String.valueOf(id));
-                                                txt_25.setText(String.valueOf(k));
-                                                txt_35.setText(String.valueOf(s));
+                                        // Log.d("urgent","Urgent jobs=="+id);
 
-                                                //Log.d("available","available jobs jobs=="+s);
-                                                //Log.d("applied","applied Jobs"+k);
+                                         txt_10.setText(String.valueOf(id));
+                                         txt_25.setText(String.valueOf(k));
+                                         txt_35.setText(String.valueOf(s));
 
-                                                // UrgentJobs urgentJobs=new UrgentJobs();
-                                                //urgentJobs.setUrgentJob(id);
-                                                //ur=id;
-                                                //total=s;
-                                                //av=k;
+                                          //Log.d("available","available jobs jobs=="+s);
+                                          //Log.d("applied","applied Jobs"+k);
+
+                                        // UrgentJobs urgentJobs=new UrgentJobs();
+                                        //urgentJobs.setUrgentJob(id);
+                                        //ur=id;
+                                        //total=s;
+                                        //av=k;
 
                                        /* btnAvaiable.setOnClickListener(new View.OnClickListener() {
                                             @Override
@@ -352,25 +312,25 @@ FirebaseAuth firebaseAuth;
                                         if(Integer.parseInt(arr1[0])<Integer.parseInt(arr2[0]) || Integer.parseInt(arr1[1])<Integer.parseInt(arr2[1]) || Integer.parseInt(arr1[2])<Integer.parseInt(arr2[2]))
                                             applied++;*/
 
-                                                // Log.d("Urgent = "+urgent+" Avilable = "+avilable+" Applied = "+applied);
-                                                //  Log.d("urgent","Urgent jobs=="+urgent);
-                                                //  txt_10.setVisibility(View.VISIBLE);
-                                                // txt_10.setText(String.valueOf(id));
-                                                //txt_25.setText(String.valueOf(k));
-                                                // txt_25.setVisibility(View.VISIBLE);
-                                                //txt_35.setText(String.valueOf(s));
-                                                //txt_35.setVisibility(View.VISIBLE);
-                                                // Log.d("available","available jobs jobs=="+avilable);
-                                                //  Log.d("applied","applied Jobs"+applied);
+                                      // Log.d("Urgent = "+urgent+" Avilable = "+avilable+" Applied = "+applied);
+                                      //  Log.d("urgent","Urgent jobs=="+urgent);
+                                        //  txt_10.setVisibility(View.VISIBLE);
+                                        // txt_10.setText(String.valueOf(id));
+                                        //txt_25.setText(String.valueOf(k));
+                                        // txt_25.setVisibility(View.VISIBLE);
+                                        //txt_35.setText(String.valueOf(s));
+                                        //txt_35.setVisibility(View.VISIBLE);
+                                        // Log.d("available","available jobs jobs=="+avilable);
+                                      //  Log.d("applied","applied Jobs"+applied);
 
-                                                // UrgentJobs urgentJobs=new UrgentJobs();
-                                                //urgentJobs.setUrgentJob(id);
-                                                //ur=id;
-                                                //total=s;
-                                                //av=k;
-                                                // special=dataSnapshot.child(jobs).child("Job_Special").getValue().toString();
+                                        // UrgentJobs urgentJobs=new UrgentJobs();
+                                        //urgentJobs.setUrgentJob(id);
+                                        //ur=id;
+                                        //total=s;
+                                        //av=k;
+                                        // special=dataSnapshot.child(jobs).child("Job_Special").getValue().toString();
 
-                                                // Log.d("UserId ",user);
+                                        // Log.d("UserId ",user);
                                      /*   Log.d("title : ",jobtitle);
                                         Log.d("company : ",companynamem);
                                         Log.d("description : ",description);
@@ -382,39 +342,39 @@ FirebaseAuth firebaseAuth;
                                         //Log.d("special : ",special);
                                        // Log.d("date : ",date);*/
 
-                                                //jobModel.add(jobM);
-                                            }
-
-
-
-                                            //  Log.d("id","Urgent jobs=="+id);
-                                            //  txt_10.setVisibility(View.VISIBLE);
-                                            // txt_10.setText(String.valueOf(id));
-                                            //txt_25.setText(String.valueOf(k));
-                                            // txt_25.setVisibility(View.VISIBLE);
-                                            //txt_35.setText(String.valueOf(s));
-                                            //txt_35.setVisibility(View.VISIBLE);
-                                            // Log.d("k","Applied jobs jobs=="+k);
-                                            //Log.d("jobs","Avaliable Jobs"+s);
-
-
-                                        }
-
+                                        //jobModel.add(jobM);
                                     }
 
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                    }
-                                });
 
 
-                                // JobListModel jobM = dataSnapshot.getValue(JobListModel.class);
-                                //jobAdapter = new JobListAdapter(FindJob.this, jobModel);
-                                //jobModel.add(jobM);
+                                    //  Log.d("id","Urgent jobs=="+id);
+                                  //  txt_10.setVisibility(View.VISIBLE);
+                                   // txt_10.setText(String.valueOf(id));
+                                    //txt_25.setText(String.valueOf(k));
+                                   // txt_25.setVisibility(View.VISIBLE);
+                                    //txt_35.setText(String.valueOf(s));
+                                    //txt_35.setVisibility(View.VISIBLE);
+                                   // Log.d("k","Applied jobs jobs=="+k);
+                                    //Log.d("jobs","Avaliable Jobs"+s);
 
-                                //ds1=firebaseDatabase.getReference().child(user).child("job1");
-                                //Log.d("user","exception"+firebaseDatabase+" "+databaseReference+" "+ds1);
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+                        // JobListModel jobM = dataSnapshot.getValue(JobListModel.class);
+                        //jobAdapter = new JobListAdapter(FindJob.this, jobModel);
+                        //jobModel.add(jobM);
+
+                        //ds1=firebaseDatabase.getReference().child(user).child("job1");
+                        //Log.d("user","exception"+firebaseDatabase+" "+databaseReference+" "+ds1);
                         /*  companynamem=dataSnapshot.child(user).child("Company_name").getValue().toString();
                         jobtitle=dataSnapshot.child(user).child("Job_Title").getValue().toString();
                         description=dataSnapshot.child(user).child("Job_Desc").getValue().toString();
@@ -424,15 +384,15 @@ FirebaseAuth firebaseAuth;
                         special=dataSnapshot.child(user).child("Job_Special").getValue().toString();
                         date=dataSnapshot.child(user).child("Job_Date").getValue().toString();
                         rupee=dataSnapshot.child(user).child("Job_Amount").getValue().toString();*/
-                                //  jobModel.add(new JobListModel(companynamem,rupee,booking_radius,date,description,end_time,special,timeofreporting,jobtitle));
-                                //jobAdapter.notifyDataSetChanged();
+                        //  jobModel.add(new JobListModel(companynamem,rupee,booking_radius,date,description,end_time,special,timeofreporting,jobtitle));
+                        //jobAdapter.notifyDataSetChanged();
 
 
-                                //JobListModel jobM = dataSnapshot.child(user).getValue(JobListModel.class);
-                                //jobAdapter = new JobListAdapter(FindJob.this, jobModel);
-                                //jobModel.add(jobM);
-                                // ds1=firebaseDatabase.getReference().child(user).child("job1");
-                                //Log.d("user","exception"+firebaseDatabase+" "+databaseReference+" "+ds1);
+                        //JobListModel jobM = dataSnapshot.child(user).getValue(JobListModel.class);
+                        //jobAdapter = new JobListAdapter(FindJob.this, jobModel);
+                        //jobModel.add(jobM);
+                        // ds1=firebaseDatabase.getReference().child(user).child("job1");
+                        //Log.d("user","exception"+firebaseDatabase+" "+databaseReference+" "+ds1);
                         /* ds1.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -456,139 +416,20 @@ FirebaseAuth firebaseAuth;
                                 }
 
                         });*/
-                            }
-                        }
-                        else{
-                            Toast.makeText(HomeActivity.this, "data not exist", Toast.LENGTH_SHORT).show();
-                        }
                     }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                    }
-                });
-
+                }
+                else{
+                    Toast.makeText(HomeActivity.this, "data not exist", Toast.LENGTH_SHORT).show();
+                }
             }
-        };
-        if(b)
-        {
-            Calendar calendar=Calendar.getInstance();
-            mainDate= DateFormat.getDateInstance().format(calendar.getTime());
-            dateDisplay.setText("CurrentDate ( "+mainDate+" )");
-            Toast.makeText(this, "In If "+mainDate+" "+b, Toast.LENGTH_SHORT).show();
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
 
-            databaseReference=firebaseDatabase.getReference().child("Jobs");
-
-            s=0;
-            id=0;
-            k=0;
-            databaseReference.addValueEventListener(new ValueEventListener() {
-
-                @Override
-                public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                            user=ds.getKey();
-                            ds1=firebaseDatabase.getInstance().getReference().child("Jobs").child(user);
-                            ds1.addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshots) {
-                                    if (dataSnapshots.exists())
-                                    {
-                                        for (DataSnapshot ds1 : dataSnapshots.getChildren())
-                                        {
-                                            String  jobs=ds1.getKey();
-                                            s++;
-                                            date=dataSnapshots.child(jobs).child("Job_Date").getValue().toString();
-                                            Log.d("date",date);
-                                            Log.d("mainDAte",mainDate);
-                                            String arr1[] = date.split("/");
-                                            String arr2[] = mainDate.split("/");
-                                            String arr3[]={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
-                                            if(arr1[0].equals(arr2[0])&&arr1[2].equals(arr2[2])&& arr2[1].equals(arr3[Integer.parseInt(arr1[1])-1]))
-                                            {
-                                                id++;
-                                            }
-                                            else
-                                                k++;
-
-                                            txt_10.setText(String.valueOf(id));
-                                            txt_25.setText(String.valueOf(k));
-                                            txt_35.setText(String.valueOf(s));
-                                        }
-                                    }
-                                }
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                }
-                            });
-                        }
-                    }
-                    else{
-                        Toast.makeText(HomeActivity.this, "data not exist", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                }
-            });
-        }
-        else {
-            Toast.makeText(this, "In else "+mainDate, Toast.LENGTH_SHORT).show();
-            databaseReference=firebaseDatabase.getReference().child("Jobs");
-            s=0;
-            id=0;
-            k=0;
-            databaseReference.addValueEventListener(new ValueEventListener() {
-
-                @Override
-                public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                            user=ds.getKey();
-                            ds1=firebaseDatabase.getInstance().getReference().child("Jobs").child(user);
-                            ds1.addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshots) {
-                                    if (dataSnapshots.exists())
-                                    {
-                                        for (DataSnapshot ds1 : dataSnapshots.getChildren())
-                                        {
-                                            String  jobs=ds1.getKey();
-                                            s++;
-                                            date=dataSnapshots.child(jobs).child("Job_Date").getValue().toString();
-                                            Log.d("date",date);
-                                            Log.d("mainDAte",mainDate);
-                                            if(date.trim().equals(mainDate))
-                                                id++;
-                                            else k++;
-
-                                            txt_10.setText(String.valueOf(id));
-                                            txt_25.setText(String.valueOf(k));
-                                            txt_35.setText(String.valueOf(s));
-                                        }
-                                    }
-                                }
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                }
-                            });
-                        }
-                    }
-                    else{
-                        Toast.makeText(HomeActivity.this, "data not exist", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                }
-            });
-        }
 
 
     }
-
 
    /* private  void pickDate(String dateJob) {
         String arr1[] = date.split("/");
@@ -610,11 +451,9 @@ FirebaseAuth firebaseAuth;
     public void onBackPressed() {
         if(mNavDrawer.isDrawerOpen(GravityCompat.START)){
             mNavDrawer.closeDrawer(GravityCompat.START);
-            Toast.makeText(this, "backpreesed", Toast.LENGTH_SHORT).show();
         }
         else{
             super.onBackPressed();
-            Toast.makeText(this, "dont pressed", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -626,7 +465,7 @@ FirebaseAuth firebaseAuth;
 
         switch (item.getItemId()) {
             case R.id.nav_home:
-               //startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+               // startActivity(new Intent(HomeActivity.this, HomeActivity.class));
                 break;
 
             case R.id.nav_find_job:
@@ -658,10 +497,4 @@ FirebaseAuth firebaseAuth;
         mNavDrawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    void overRideMainDate(String str)
-    {
-        mainDate=str;
-    }
-
 }
