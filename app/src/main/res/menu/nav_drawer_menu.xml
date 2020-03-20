@@ -13,13 +13,13 @@
         <item
             android:id="@+id/nav_find_job"
             android:icon="@drawable/find_job"
-            android:title="Find Job" />
+            android:title="Available Jobs" />
 
 
         <item
             android:id="@+id/nav_urgent_job"
             android:icon="@drawable/find_job"
-            android:title="Urgent Job" />
+            android:title="Urgent Jobs" />
 
         <item
             android:id="@+id/nav_applied_jobs"
