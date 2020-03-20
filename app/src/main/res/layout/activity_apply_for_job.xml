@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dimen_20dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:text="Update Profile"
+            android:textSize="@dimen/text_16sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="@dimen/dimen_100dp"
+            android:layout_height="@dimen/dimen_100dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:background="@drawable/rounded_corner_layout"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_10dp">
+
+            <ImageView
+                android:id="@+id/ProfileImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/profile_icon"></ImageView>
+        </LinearLayout>
+
+        <!--background_information layout field start -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_15dp"
+            android:text="Information"
+            android:textSize="@dimen/text_14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:background="@drawable/rounded_corner_layout"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_10dp">
+
+
+            <!--First Name and Last Name  field layout start-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="User Name"
+                android:textColor="@color/orange_color"
+                android:textSize="@dimen/text_12sp" />
+
+            <EditText
+                android:id="@+id/et_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                android:gravity="center_vertical"
+                android:hint="User Name"
+                android:inputType="text"
+                android:nextFocusDown="@+id/et_email"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_8dp"
+                android:textColor="@color/gray_color"
+                android:textSize="@dimen/dimen_12dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="Langauge"
+                android:textColor="@color/orange_color"
+                android:textSize="@dimen/text_12sp" />
+
+            <EditText
+                android:id="@+id/et_langauge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                android:gravity="center_vertical"
+                android:hint="Hindi,English..."
+                android:inputType="text"
+                android:nextFocusDown="@+id/et_email"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_8dp"
+                android:textColor="@color/gray_color"
+                android:textSize="@dimen/dimen_12dp" />
+
+
+
+            <!--First Name and Last Name  field layout End-->
+
+
+            <!--PhoneNumber layout field start-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@string/phone_number"
+                android:textColor="@color/orange_color"
+                android:textSize="@dimen/text_12sp" />
+
+            <EditText
+                android:id="@+id/et_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                android:gravity="center_vertical"
+                android:hint="Ex. 9009012345"
+                android:inputType="phone"
+                android:nextFocusDown="@+id/et_email"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_8dp"
+                android:textColor="@color/gray_color"
+                android:textSize="@dimen/dimen_12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="Google Pay Numbrer"
+                android:textColor="@color/orange_color"
+                android:textSize="@dimen/text_12sp" />
+
+            <EditText
+                android:id="@+id/et_tez_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                android:drawablePadding="@dimen/dimen_5dp"
+                android:gravity="center_vertical"
+                android:hint="6289631547"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_8dp"
+                android:inputType="phone"
+                android:textColor="@color/gray_color"
+                android:textSize="@dimen/dimen_12dp">
+
+            </EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="Location"
+                android:textColor="@color/orange_color"
+                android:textSize="@dimen/text_12sp" />
+
+            <EditText
+                android:id="@+id/et_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:background="@drawable/rounded_corner_rectangle_solid_gray"
+                android:drawablePadding="@dimen/dimen_5dp"
+                android:gravity="center_vertical"
+                android:hint="Location"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_8dp"
+                android:inputType="textPostalAddress"
+                android:textColor="@color/gray_color"
+                android:textSize="@dimen/dimen_12dp">
+
+            </EditText>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_ApplyEmployee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner_rectangle_black_2"
+            android:gravity="center"
+            android:padding="@dimen/dimen_10dp"
+            android:hint="Apply"
+            android:textAlignment="center"
+            android:textColorHint="#FFF"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_16sp" />
+
+
+        <!--Register button layout field End-->
+
+
+    </LinearLayout>
+</ScrollView>

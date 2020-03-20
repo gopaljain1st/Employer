@@ -8,11 +8,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,9 +40,19 @@ import com.google.firebase.storage.StorageReference;
 import com.google.protobuf.compiler.PluginProtos;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+
 public class HomeActivity extends AppCompatActivity implements  NavigationView
         .OnNavigationItemSelectedListener{
 private DrawerLayout mNavDrawer;
+
+
+    private static final String TAG = "HomeActivity";
+    private TextView mDisplayDate;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
+
+String userJobDate;
 
 ImageView imageView;
 
@@ -47,10 +62,22 @@ FirebaseAuth firebaseAuth;
     FirebaseFirestore fStore;
 
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,ds1;
     View viewHeader;
     StorageReference storageReference;
     private FirebaseUser mCurrentUser;
+
+    TextView txt_35,txt_10,txt_5,txt_25;
+
+    String user,dateJob,date,kkk;
+    int id=0,s=0,k=0;
+
+
+    int urgent=0,avilable=0,applied=0;
+
+    Button btnAvaiable;
+
+    EditText et_date_j;
 
 
     @Override
@@ -58,7 +85,84 @@ FirebaseAuth firebaseAuth;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_drawable_layout);
 
+       // mDisplayDate =  findViewById(R.id.tvDate);
+
+      /*  mDisplayDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.icu.util.Calendar cal = android.icu.util.Calendar.getInstance();
+                int year = cal.get(android.icu.util.Calendar.YEAR);
+                int month = cal.get(android.icu.util.Calendar.MONTH);
+                int day = cal.get(android.icu.util.Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        HomeActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener,
+                        year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });*/
+
+       /* mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                Log.d(TAG, "onDateSet: mm/dd/yyy: " + day + "/" + month + "/" + year);
+
+                 dateJob = day + "/" + month + "/" + year;
+                mDisplayDate.setText(dateJob);
+            }
+        };*/
+
+
+
+       /* mDisplayDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.icu.util.Calendar cal = android.icu.util.Calendar.getInstance();
+                int year = cal.get(android.icu.util.Calendar.YEAR);
+                int month = cal.get(android.icu.util.Calendar.MONTH);
+                int day = cal.get(android.icu.util.Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        HomeActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener,
+                        year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });*/
+
+       /* mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                Log.d(TAG, "onDateSet: mm/dd/yyy: " + day + "/" + month + "/" + year);
+
+                dateJob = day + "/" + month + "/" + year;
+                mDisplayDate.setText(dateJob);
+             //   pickDate(dateJob);
+            }
+        };*/
+
+
+       //et_date_j=findViewById(R.id.et_date_job);
+      // dateJob=et_date_j.getText().toString();
+       //btnAvaiable=findViewById(R.id.btnAvailable);
+
+
         imageView=findViewById(R.id.userImage);
+
+        txt_25=findViewById(R.id.txt_25);
+        txt_35=findViewById(R.id.txt_35);
+        txt_10=findViewById(R.id.txt_10);
+        txt_5=findViewById(R.id.txt_5);
+
+
+
 
         firebaseAuth=FirebaseAuth.getInstance();
         mCurrentUser = firebaseAuth.getCurrentUser();
@@ -113,8 +217,235 @@ FirebaseAuth firebaseAuth;
             Toast.makeText(this, ""+n, Toast.LENGTH_SHORT).show();
         }
 
+        databaseReference=firebaseDatabase.getReference().child("Jobs");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        user=ds.getKey();
+                        ds1=firebaseDatabase.getInstance().getReference().child("Jobs").child(user);
+                        // user=ds.getKey();
+                        ds1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshots) {
+                                if (dataSnapshots.exists())
+                                {
+                                    for (DataSnapshot ds1 : dataSnapshots.getChildren())
+                                    {
+                                        String  jobs=ds1.getKey();
+                                        s++;
+
+                                        date=dataSnapshots.child(jobs).child("Job_Date").getValue().toString();
+
+
+                                        // s=(int)dataSnapshot.getChildrenCount();
+                                        Calendar calendar=Calendar.getInstance();
+                                        String currentDate= DateFormat.getDateInstance().format(calendar.getTime());
+
+                                        //Log.d("current","urgent job="+currentDate);
+                                        //Log.d("date","urgent job="+date);
+                                        // date1= sc.next()==date;
+                                        //date2 = sc.next();
+
+                                        //Log.d("datejob","date"+kkk);
+
+                                        String arr1[] = date.split("/");
+                                        String arr2[] = currentDate.split("-");
+                                        String arr3[]={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+                                        if(arr1[0].equals(arr2[0])&&arr1[2].equals(arr2[2])&& arr2[1].equals(arr3[Integer.parseInt(arr1[1])-1])) {
+                                            id++;
+                                        }
+                                        else
+                                            k++;
+
+                                        // Log.d("urgent","Urgent jobs=="+id);
+
+                                         txt_10.setText(String.valueOf(id));
+                                         txt_25.setText(String.valueOf(k));
+                                         txt_35.setText(String.valueOf(s));
+
+                                          //Log.d("available","available jobs jobs=="+s);
+                                          //Log.d("applied","applied Jobs"+k);
+
+                                        // UrgentJobs urgentJobs=new UrgentJobs();
+                                        //urgentJobs.setUrgentJob(id);
+                                        //ur=id;
+                                        //total=s;
+                                        //av=k;
+
+                                       /* btnAvaiable.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                dateJob=et_date_j.getText().toString();
+                                                Log.d("datejob","datejob"+dateJob);
+
+                                                try {
+                                                    String arr1[] = dateJob.split("/");
+                                                    String arr2[] = date.split("/");
+
+                                                    if (arr1[0].equals(arr2[0]))
+                                                        urgent++;
+                                                    if (Integer.parseInt(arr1[0]) <= Integer.parseInt(arr2[0]) || Integer.parseInt(arr1[1]) < Integer.parseInt(arr2[1]) || Integer.parseInt(arr1[2]) < Integer.parseInt(arr2[2]))
+                                                        avilable++;
+                                                    if (Integer.parseInt(arr1[0]) < Integer.parseInt(arr2[0]) || Integer.parseInt(arr1[1]) < Integer.parseInt(arr2[1]) || Integer.parseInt(arr1[2]) < Integer.parseInt(arr2[2]))
+                                                        applied++;
+
+
+                                                    txt_10.setText(String.valueOf(urgent));
+                                                    txt_25.setText(String.valueOf(applied));
+                                                    txt_35.setText(String.valueOf(avilable));
+                                                }catch (Exception e){
+                                                    Log.d("error1","error1"+e);
+                                                }
+
+                                            }
+                                        });*/
+
+
+
+                                       /*if(arr1[0].equals(arr2[0]))
+                                            urgent++;
+                                        if(Integer.parseInt(arr1[0])<=Integer.parseInt(arr2[0]) || Integer.parseInt(arr1[1])<Integer.parseInt(arr2[1]) || Integer.parseInt(arr1[2])<Integer.parseInt(arr2[2]))
+                                            avilable++;
+                                        if(Integer.parseInt(arr1[0])<Integer.parseInt(arr2[0]) || Integer.parseInt(arr1[1])<Integer.parseInt(arr2[1]) || Integer.parseInt(arr1[2])<Integer.parseInt(arr2[2]))
+                                            applied++;*/
+
+                                      // Log.d("Urgent = "+urgent+" Avilable = "+avilable+" Applied = "+applied);
+                                      //  Log.d("urgent","Urgent jobs=="+urgent);
+                                        //  txt_10.setVisibility(View.VISIBLE);
+                                        // txt_10.setText(String.valueOf(id));
+                                        //txt_25.setText(String.valueOf(k));
+                                        // txt_25.setVisibility(View.VISIBLE);
+                                        //txt_35.setText(String.valueOf(s));
+                                        //txt_35.setVisibility(View.VISIBLE);
+                                        // Log.d("available","available jobs jobs=="+avilable);
+                                      //  Log.d("applied","applied Jobs"+applied);
+
+                                        // UrgentJobs urgentJobs=new UrgentJobs();
+                                        //urgentJobs.setUrgentJob(id);
+                                        //ur=id;
+                                        //total=s;
+                                        //av=k;
+                                        // special=dataSnapshot.child(jobs).child("Job_Special").getValue().toString();
+
+                                        // Log.d("UserId ",user);
+                                     /*   Log.d("title : ",jobtitle);
+                                        Log.d("company : ",companynamem);
+                                        Log.d("description : ",description);
+                                        Log.d("rupee : ",rupee);
+                                        Log.d("date : ",date);
+                                        Log.d("timeofreporitng : ",timeofreporting);
+                                        Log.d("endtime : ",end_time);
+                                        Log.d("bookingradius : ",booking_radius);
+                                        //Log.d("special : ",special);
+                                       // Log.d("date : ",date);*/
+
+                                        //jobModel.add(jobM);
+                                    }
+
+
+
+                                    //  Log.d("id","Urgent jobs=="+id);
+                                  //  txt_10.setVisibility(View.VISIBLE);
+                                   // txt_10.setText(String.valueOf(id));
+                                    //txt_25.setText(String.valueOf(k));
+                                   // txt_25.setVisibility(View.VISIBLE);
+                                    //txt_35.setText(String.valueOf(s));
+                                    //txt_35.setVisibility(View.VISIBLE);
+                                   // Log.d("k","Applied jobs jobs=="+k);
+                                    //Log.d("jobs","Avaliable Jobs"+s);
+
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+                        // JobListModel jobM = dataSnapshot.getValue(JobListModel.class);
+                        //jobAdapter = new JobListAdapter(FindJob.this, jobModel);
+                        //jobModel.add(jobM);
+
+                        //ds1=firebaseDatabase.getReference().child(user).child("job1");
+                        //Log.d("user","exception"+firebaseDatabase+" "+databaseReference+" "+ds1);
+                        /*  companynamem=dataSnapshot.child(user).child("Company_name").getValue().toString();
+                        jobtitle=dataSnapshot.child(user).child("Job_Title").getValue().toString();
+                        description=dataSnapshot.child(user).child("Job_Desc").getValue().toString();
+                        timeofreporting=dataSnapshot.child(user).child("Job_Start_Time").getValue().toString();
+                        end_time=dataSnapshot.child(user).child("Job_End_Time").getValue().toString();
+                        booking_radius=dataSnapshot.child(user).child("Job_Booking_Radius").getValue().toString();
+                        special=dataSnapshot.child(user).child("Job_Special").getValue().toString();
+                        date=dataSnapshot.child(user).child("Job_Date").getValue().toString();
+                        rupee=dataSnapshot.child(user).child("Job_Amount").getValue().toString();*/
+                        //  jobModel.add(new JobListModel(companynamem,rupee,booking_radius,date,description,end_time,special,timeofreporting,jobtitle));
+                        //jobAdapter.notifyDataSetChanged();
+
+
+                        //JobListModel jobM = dataSnapshot.child(user).getValue(JobListModel.class);
+                        //jobAdapter = new JobListAdapter(FindJob.this, jobModel);
+                        //jobModel.add(jobM);
+                        // ds1=firebaseDatabase.getReference().child(user).child("job1");
+                        //Log.d("user","exception"+firebaseDatabase+" "+databaseReference+" "+ds1);
+                        /* ds1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                try {
+                                    JobListModel jobM = dataSnapshot.getValue(JobListModel.class);
+
+                                    jobModel.add(jobM);
+
+
+                                    jobAdapter = new JobListAdapter(FindJob.this, jobModel);
+                                    // recyclerView.setAdapter(jobAdapter);
+                                    jobAdapter.notifyDataSetChanged();
+                                }catch (Exception e){
+                                    Log.d("MyAccountn","exception"+e);
+                                }
+                                }
+
+                                @Override
+                                public void onCancelled (@NonNull DatabaseError databaseError){
+
+                                }
+
+                        });*/
+                    }
+                }
+                else{
+                    Toast.makeText(HomeActivity.this, "data not exist", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+
 
     }
+
+   /* private  void pickDate(String dateJob) {
+        String arr1[] = date.split("/");
+        String arr2[] = dateJob.split("/");
+
+        if(arr1[0].equals(arr2[0]))
+            urgent++;
+        if(Integer.parseInt(arr1[0])<=Integer.parseInt(arr2[0]) || Integer.parseInt(arr1[1])<Integer.parseInt(arr2[1]) || Integer.parseInt(arr1[2])<Integer.parseInt(arr2[2]))
+            avilable++;
+        if(Integer.parseInt(arr1[0])<Integer.parseInt(arr2[0]) || Integer.parseInt(arr1[1])<Integer.parseInt(arr2[1]) || Integer.parseInt(arr1[2])<Integer.parseInt(arr2[2]))
+            applied++;
+
+        txt_10.setText(String.valueOf(urgent));
+        txt_25.setText(String.valueOf(applied));
+        txt_35.setText(String.valueOf(avilable));
+    }*/
 
     @Override
     public void onBackPressed() {
@@ -133,8 +464,8 @@ FirebaseAuth firebaseAuth;
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.nav_dashboard:
-                startActivity(new Intent(HomeActivity.this, DashBoard.class));
+            case R.id.nav_home:
+               // startActivity(new Intent(HomeActivity.this, HomeActivity.class));
                 break;
 
             case R.id.nav_find_job:
@@ -145,7 +476,7 @@ FirebaseAuth firebaseAuth;
                 startActivity(new Intent(HomeActivity.this, UrgentJobActivity.class));
                 break;
 
-            case R.id.nav_set_availabilty:
+            case R.id.nav_applied_jobs:
                 startActivity(new Intent(HomeActivity.this, EmployeeSetAvalibilty.class));
                 break;
 

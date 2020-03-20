@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        card_view:cardCornerRadius="0dp">
+
+        <LinearLayout
+            android:id="@+id/lin_firstId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_compId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JOB TITLE :" />
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                     android:layout_alignParentRight="true"
+                        android:text=" MORNING SHIFT"
+                        android:textColor="#000000" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#D7D7D7"></View>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                   >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_compId2"
+                        android:text="COMPANY NAME:" />
+
+                    <TextView
+                        android:id="@+id/tv_compId2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text=" YYYYYYY"
+                        android:textColor="#000000" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#D7D7D7"></View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_projId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DESCRIPTION:" />
+
+                    <TextView
+                        android:id="@+id/tv_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:ems="5"
+                        android:layout_toRightOf="@+id/tv_projId"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:text="BridgeWaterloo"
+                        android:textColor="#000000" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#D7D7D7"></View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_totaltimeId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JOB START TIME:" />
+
+                    <TextView
+                        android:id="@+id/tv_totalTimeId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@+id/tv_totaltimeId"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:text="9:00"
+                        android:textColor="#000000" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#D7D7D7"></View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_starttimeId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JOB END TIME:" />
+
+                    <TextView
+                        android:id="@+id/tv_startTimeId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@+id/tv_starttimeId"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:text="9 Hours"
+                        android:textColor="#000000" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#D7D7D7"></View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_teamId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JOB DATE:" />
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@+id/tv_teamId"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:text="9-DEC"
+                        android:textColor="#000000" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#D7D7D7"></View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_special"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JOB SPECIAL:" />
+
+                    <TextView
+                        android:id="@+id/tv_bleck_pant"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@+id/tv_special"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:text="black pant"
+                        android:textColor="#000000" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#D7D7D7"></View>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_job_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JOB AMOUNT:" />
+
+                    <TextView
+                        android:id="@+id/tv_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@+id/tv_job_amount"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:text="Rs.600"
+                        android:textColor="#000000" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#D7D7D7"></View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_booking_radius"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JOB BOOKING RADIUS:" />
+
+                    <TextView
+                        android:id="@+id/tv_job_booking_radius"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@+id/tv_booking_radius"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:text="pune"
+                        android:textColor="#000000" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#D7D7D7"></View>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_employer_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="EMPLOYEE ID:" />
+
+                    <TextView
+                        android:id="@+id/tv_employer_userId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@+id/tv_employer_user"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:text="Iftdtrfgcyttfy"
+                        android:textColor="#000000" />
+                </RelativeLayout>
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#D7D7D7"></View>
+
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btnViewMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MORE" />
+
+                    <Button
+                        android:id="@+id/btnApply"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_toRightOf="@+id/btnViewMore"
+                        android:text="APPLY" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView >
+
+</RelativeLayout>

@@ -5,7 +5,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,9 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.employeetesting.model.EmployeeData;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,9 +22,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.StorageReference;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class EditProfile extends AppCompatActivity {
 
@@ -43,7 +37,7 @@ public class EditProfile extends AppCompatActivity {
     Button btnUpdate;
 
     private ImageView userImage;
-    EmployeeData et;
+    //EmployeeData et;
 
     private Uri imageUri = null;
     private StorageReference storageReference;
@@ -79,7 +73,7 @@ public class EditProfile extends AppCompatActivity {
 
         final DocumentReference docRef = fStore.collection("users").document(userID);
 
-        et=new EmployeeData();
+        //et=new EmployeeData();
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {

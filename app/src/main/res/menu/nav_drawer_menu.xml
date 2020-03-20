@@ -6,9 +6,9 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_dashboard"
-            android:icon="@drawable/ic_dashboard_black_24dp"
-            android:title="Dashboard" />
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
 
         <item
             android:id="@+id/nav_find_job"
@@ -22,9 +22,9 @@
             android:title="Urgent Job" />
 
         <item
-            android:id="@+id/nav_set_availabilty"
+            android:id="@+id/nav_applied_jobs"
             android:icon="@drawable/find_job"
-            android:title="Set Availabilty" />
+            android:title="Applied Jobs" />
 
         <item
             android:id="@+id/nav_edit_profile"

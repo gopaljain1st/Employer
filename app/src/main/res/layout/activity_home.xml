@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    android:layout_height="match_parent">
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -16,9 +16,131 @@
         android:elevation="2dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintLeft_toRightOf="parent"
-        >
-
+        app:layout_constraintLeft_toRightOf="parent">
     </androidx.appcompat.widget.Toolbar>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Your Availabilty"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date(25-03-2020)"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:textColor="#000000"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAvailable"
+                android:gravity="center"
+                android:layout_margin="30dp"
+                android:text="AVAILABLE"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/available"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Available Jobs"
+                android:textColor="#000000"
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/txt_35"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="35"
+                android:gravity="center"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Applied Jobs"
+                android:textColor="#000000"
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/txt_25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="25"
+                android:gravity="center"
+                android:textColor="#000000"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnUnavAilable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="30dp"
+                android:text="UNAVAILABLE"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/unavailable"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Urgent Jobs"
+                android:textColor="#000000"
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/txt_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:gravity="center"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upcoming Jobs"
+                android:textColor="#000000"
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/txt_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:gravity="center"
+                android:textColor="#000000"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
