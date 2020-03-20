@@ -219,7 +219,7 @@ FirebaseAuth firebaseAuth;
 
         databaseReference=firebaseDatabase.getReference().child("Jobs");
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -227,7 +227,7 @@ FirebaseAuth firebaseAuth;
                         user=ds.getKey();
                         ds1=firebaseDatabase.getInstance().getReference().child("Jobs").child(user);
                         // user=ds.getKey();
-                        ds1.addValueEventListener(new ValueEventListener() {
+                        ds1.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshots) {
                                 if (dataSnapshots.exists())
